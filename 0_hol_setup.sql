@@ -136,5 +136,5 @@ CALL ai_agent_budget!SET_NOTIFICATION_THRESHOLD(80);
 -- These roles are created by the prerequisites script (Phase A).
 -- The app's "Grant Roles to Me" button fails in Streamlit-in-Snowflake,
 -- so grant them manually here.
-GRANT ROLE CC_ADMIN_ROLE TO USER ADIGNADICE;
-GRANT ROLE CC_USER_ROLE TO USER ADIGNADICE;
+GRANT ROLE CC_ADMIN_ROLE TO USER identifier($MY_USER_ID);
+GRANT ROLE CC_USER_ROLE TO USER identifier($MY_USER_ID);
