@@ -1570,7 +1570,7 @@ USING (
         ('Security & Credentials',
          'Secrets, API keys, passwords or credential extraction.',
          'KEYWORD',
-         '{"keywords":["api_key","api key","private_key","private key","password","secret","bearer","oauth","access_key","credential","aws_secret","token","auth_token","client_secret","jwt","pem","pfx","keyfile","service_account","ssh_key","rsa_key","AKIA","ghp_","sk-","-----BEGIN"]}',
+         '{"keywords":["api_key","api key","private_key","private key","password","secret","bearer","oauth","access_key","credential","aws_secret","token","auth_token","client_secret","jwt","pem","pfx","keyfile","service_account","ssh_key","rsa_key","AKIA","ghp_","sk-","BEGIN PRIVATE KEY","BEGIN CERTIFICATE","BEGIN RSA"]}',
          'HIGH','SECURITY','BOTH'),
         ('Prompt Injection',
          'Common prompt injection and jailbreak attempts — override or bypass AI instructions.',
@@ -1612,7 +1612,7 @@ VALUES
 -- Upgrade: update existing Security & Credentials keywords to expanded list
 -- (MERGE above only inserts new rows — this updates existing installs)
 UPDATE CC_POLICY_RULES
-SET CONDITIONS = PARSE_JSON('{"keywords":["api_key","api key","private_key","private key","password","secret","bearer","oauth","access_key","credential","aws_secret","token","auth_token","client_secret","jwt","pem","pfx","keyfile","service_account","ssh_key","rsa_key","AKIA","ghp_","sk-","-----BEGIN"]}')
+SET CONDITIONS = PARSE_JSON('{"keywords":["api_key","api key","private_key","private key","password","secret","bearer","oauth","access_key","credential","aws_secret","token","auth_token","client_secret","jwt","pem","pfx","keyfile","service_account","ssh_key","rsa_key","AKIA","ghp_","sk-","BEGIN PRIVATE KEY","BEGIN CERTIFICATE","BEGIN RSA"]}')
 WHERE RULE_NAME = 'Security & Credentials' AND CREATED_BY = 'SYSTEM';
 
 -- Upgrade: set Security & Credentials and PII Detection to scan BOTH prompt and response
